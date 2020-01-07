@@ -151,13 +151,13 @@ def trip_duration(df):
     print('The total trip duration is {} hours, {} minutes and {}'
           ' seconds.'.format(hour, minute, second))
     average_duration = round(df['trip_duration'].mean())
-    m, s = divmod(average_duration, 60)
-    if m > 60:
-        h, m = divmod(m, 60)
+    min, sec = divmod(average_duration, 60)
+    if min > 60:
+        hr, min = divmod(min, 60)
         print('The average trip duration is {} hours, {} minutes and {}'
-              ' seconds.'.format(h, m, s))
+              ' seconds.'.format(hr, min, sec))
     else:
-        print('The average trip duration is {} minutes and {} seconds.'.format(m, s))
+        print('The average trip duration is {} minutes and {} seconds.'.format(min, sec))
 
 def popular_stations(df):
     '''Finds and prints the most popular start station and most popular end station.
