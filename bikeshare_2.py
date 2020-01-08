@@ -7,9 +7,9 @@ import time
 def get_city():
     '''Asks the user for a city and returns the filename for that city's bike share data.
 
-    Input:
+    Args:
         none.
-    Output:
+    Returns:
         (str) Filename for a city's bikeshare data.
     '''
     city = ''
@@ -228,6 +228,10 @@ def display_data(df):
     Returns:
         none
     '''
+
+    '''
+    P.S. This function has been refactored to give the is_valid() one below
+    '''
     def is_valid(display):
         if display.lower() in ['yes', 'no']:
             return True
@@ -277,7 +281,8 @@ def statistics():
     Returns:
         none.
     '''
-    # Filter by city (Chicago, New York, Washington)
+    # Available Functionaliy
+    # 1. Filter by city (Chicago, New York, Washington)
     city = get_city()
     print('Loading data...')
     df = pd.read_csv(city, parse_dates = ['Start Time', 'End Time'])
@@ -296,7 +301,7 @@ def statistics():
     # 'end_station' for the use popular_trip() function
     df['journey'] = df['start_station'].str.cat(df['end_station'], sep=' to ')
 
-    # Filter by time period (month, day, none)
+    # 2. Filter by time period (month, day, none)
     time_period = get_time_period()
     if time_period == 'none':
         df_filtered = df
@@ -369,10 +374,10 @@ def statistics():
         birth_years(df_filtered)
         print("That took %s seconds." % (time.time() - start_time))
 
-    # Display five lines of data at a time if user specifies that they would like to
+    # 3. Display five lines of data at a time if user specifies that they would like to
     display_data(df_filtered)
 
-    # Restart?
+    # 4. Restart?
     restart = input('\nWould you like to restart? Type \'yes\' or \'no\'.\n')
     while restart.lower() not in ['yes', 'no']:
         print("Invalid input. Please type 'yes' or 'no'.")
