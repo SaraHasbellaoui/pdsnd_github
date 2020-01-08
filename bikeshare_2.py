@@ -228,6 +228,10 @@ def display_data(df):
     Returns:
         none
     '''
+
+    '''
+    P.S. This function has been refactored to give the is_valid() one below
+    '''
     def is_valid(display):
         if display.lower() in ['yes', 'no']:
             return True
